@@ -28,10 +28,51 @@
      }
      .btn{
         width: 90px;
-        height: 90px;
+        height: 70px;
         font-size: 70px;
         background-color: #ffff;
+        color: red;
      }
+     #start{
+        text-align: center;
+        font-size: 30px;
+        position: relative;
+        left: 45%;
+        top:40%;
+        padding: 20px;
+        border-width: 2px;
+        border-radius: 20px;
+        
+     }
+
+     #text{
+      text-align: center;
+      font-size: 30px;
+      background-color: red;
+      color: #ffff;
+      margin-top: 20px;
+      width: 30%;
+     }
+     @media screen and (max-width:830px){
+      .btn{
+        width: 60px;
+        height: 40px;
+        font-size: 30px;
+        color:red;
+      }
+      div{
+        width: 50%;
+        
+      }
+      section{
+        height: 100vh;
+      }
+      #start{
+        left: 40%;
+      }
+     }
+     
+    
 
     </style>
 </head>
@@ -49,10 +90,14 @@
     <button class="btn"></button>
     <button class="btn"></button>
     </div>
+      <div id="text"></div>
+      <button id="start" >Start</button>
     </section>
 
     <script type="text/javascript">
         let turn = true;
+        let str = document.querySelector("#start")
+        let text = document.querySelector("#text")
 
         let arr = [
             [0,1,2],
@@ -89,17 +134,22 @@
             let val3 = btn[pattern[2]].innerHTML
            if(val1 != "" && val2 != "" && val3 != ""){
             if(val1 == val2 && val2 == val3){
-             alert(`winner is ${val1}`)
-              
+            // alert(`Winner is player ${val1}`)
+               text.innerHTML= `Winner is Player  ${val1} `
              for(let a of btn){
                 a.disabled = true;
              }
             }
-           }
-       
-          
+           } 
         }
      }
+   btn.forEach((click)=>{
+    str.addEventListener('click',(e)=>{
+       text.innerHTML ="";
+       click.innerHTML = "";
+       click.disabled = false
+    })
+   })
 
 
     // Other way to write the code
